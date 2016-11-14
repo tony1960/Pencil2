@@ -82,14 +82,23 @@ public class Promotion {
         Float high;
 
         low = price * .70F;
-        high = price * .95F;
+        
+        
+                   System.out.println (" compare reduction " +  reduction);
 
-        if ((reducedPrice.compareTo(low) < 0)  || (reducedPrice.compareTo(high) > 0)) {
+        if (reduction.compareTo(low) < 0)   {
+            
+            System.out.println (" compare low = " + reducedPrice.compareTo(low));
+            System.out.println ("reducedPrice = " + reducedPrice );
+                    
             stableDays  = 0;
-            reducedPrice = 0.0F;           
+            reducedPrice = 0.0F;
+            
+            System.out.println ("low = " + low +" " + "reduction " + reduction);
+            return;
         }
         
-        reducedPrice = reduction;
+     reducedPrice = reduction;
        
     }
     
@@ -100,4 +109,14 @@ public class Promotion {
             stableDays = 0 ;
         }
     }
+    
+    
+    public Boolean addtionalPromotionValid() {
+   
+        if (( reducedPrice.compareTo(0.0F) != 0) || ( stableDays <= 30)){
+            return false;
+        }
+       
+        return true;
+    } 
 }
