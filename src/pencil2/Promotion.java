@@ -78,6 +78,17 @@ public class Promotion {
     
     public void  furtherPriceReduction (Float reduction ){
     
+        Float low;
+        Float high;
+
+        low = price * .70F;
+        high = price * .95F;
+
+        if ((reducedPrice.compareTo(low) < 0)  || (reducedPrice.compareTo(high) > 0)) {
+            stableDays  = 0;
+            reducedPrice = 0.0F;           
+        }
+        
         reducedPrice = reduction;
        
     }
