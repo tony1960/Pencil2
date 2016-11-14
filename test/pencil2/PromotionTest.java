@@ -196,15 +196,45 @@ public class PromotionTest {
         assertTrue("Promotion", result);
 
     }
-    
+
     @Test
     public void testpromotionValidMoreDays() {
         System.out.println("priceReduction");
         int days = 31;
         instance.InitialStableDays(days);
         Boolean result = instance.promotionValid();
-        assertFalse ("Promotion", result);
-
+        assertTrue("Promotion", result);
     }
+
+    @Test
+    public void testFurtherPriceReduction() {
+        System.out.println("testFurtherPriceReduction");
+
+        Float initPrice = 10.0F;
+        instance.InitialPrice(initPrice);
+        Float expectedResult = 7.0F;
+        instance.priceReduction(8.0F);
+        Float futherReduction = 7.0F;
+        instance.furtherPriceReduction(futherReduction);
+        Float result = instance.reducedPrice;
+        assertEquals(expectedResult, result, .001);
+    }
+    
+    @Test
+    public void costIncrease(){
+                System.out.println("testFurtherPriceReduction");
+        Float initPrice = 10.0F;
+        Float reducedPrice = 8.0F;
+        Float expectedResult  = 11.0F;
+        instance.InitialPrice(initPrice);
+        instance.furtherPriceReduction(reducedPrice);
+        Float priceIncrease = 11.0F;
+        instance.costIncrease(priceIncrease);
+        Float result = instance.price;
+        assertEquals (expectedResult, result, 0.001F);
+        
+                
+    }
+    
 
 }
