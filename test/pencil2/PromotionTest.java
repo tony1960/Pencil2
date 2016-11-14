@@ -214,12 +214,12 @@ public class PromotionTest {
         instance.InitialPrice(initPrice);
         Float expectedResult = 7.0F;
         instance.priceReduction(8.0F);
-        Float futherReduction = 7.0F;
-        instance.furtherPriceReduction(futherReduction);
+        Float furtherReduction = 7.0F;
+        instance.furtherPriceReduction(furtherReduction);
         Float result = instance.reducedPrice;
         assertEquals(expectedResult, result, .001);
     }
-    
+
     @Test
     public void testFurtherPriceReductionOutofRangePrice() {
         System.out.println("testFurtherPriceReductionOutofRangePrice");
@@ -233,22 +233,21 @@ public class PromotionTest {
         Float result = instance.reducedPrice;
         assertEquals(expectedResult, result, .001);
     }
-    
+
     @Test
     public void testFurtherPriceReductionOutofRangeDays() {
         System.out.println("testFurtherPriceReductionOutofRangeDays");
 
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
-        int  expectedResult = 0;
+        int expectedResult = 0;
         instance.priceReduction(8.0F);
         Float futherReduction = 6.0F;
         instance.furtherPriceReduction(futherReduction);
         int result = instance.stableDays;
         assertEquals(expectedResult, result);
     }
-    
-    
+
     @Test
     public void TestcostIncreasePrice() {
         System.out.println("costIncreasePrice");
@@ -264,7 +263,7 @@ public class PromotionTest {
     }
 
     @Test
-    public void costIncreaseDays() {
+    public void testCostIncreaseDays() {
         System.out.println("costIncreaseDays");
         Float initPrice = 10.0F;
         Float reducedPrice = 8.0F;
@@ -277,6 +276,7 @@ public class PromotionTest {
         assertEquals(expectedResult, result);
     }
 
+    @Test
     public void costIncreasePriceReductedPrice() {
         System.out.println("costIncreasePriceReductedPrice");
         Float initPrice = 10.0F;
@@ -290,7 +290,33 @@ public class PromotionTest {
         assertEquals(expectedResult, result, 0.001F);
 
     }
+
     
     
+    @Test
+    public void testAddtionalPromotionValidDaysPreviousPromotionEnded() {
+        System.out.println("testAddtionalPromotionValid");
+        Float initPrice = 10.0F;
+        Float reducedPrice = 8.0F;
+        instance.InitialPrice(initPrice);
+        instance.InitialStableDays(29);
+        instance.priceReduction(9.00F);
+        instance.InitialStableDays(31);
+        Boolean result =  instance.addtionalPromotionValid();
+        assertTrue ("Promotion", result);
+    }
+    
+    @Test
+    public void testAddtionalPromotionValidDaysWithinPreviousPromotion() {
+        System.out.println("testAddtionalPromotionValid");
+        Float initPrice = 10.0F;
+        Float reducedPrice = 8.0F;
+        instance.InitialPrice(initPrice);
+        instance.InitialStableDays(29);
+        instance.priceReduction(9.00F);
+        instance.InitialStableDays (21);
+        Boolean result =  instance.addtionalPromotionValid();
+        assertFalse ("Promotion", result);
+    }
 
 }
