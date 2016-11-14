@@ -28,13 +28,19 @@ public class Promotion {
      * InitialPrice. Sets the Price for start of test.
      *
      * @param   price   Price value.
-     * @return  true    - if reducted price is with range 
-     * @return false    - if reducted price is out of range.
      */
     public void InitialPrice(Float price) {
         this.price = price;
     }
 
+    
+    /**
+     * priceRedution . Reduces price to reducedPrice price.
+     *
+     * @param   price   Price value.
+     * @return  true    - if reducted price is with range 
+     * @return false    - if reducted price is out of range.
+     */
     public Boolean priceReduction(Float reductedPrice) {
 
         if (stableDays < 30) {
@@ -58,4 +64,12 @@ public class Promotion {
         return true;
     }
 
+    
+    public Boolean promotionValid(){
+     
+        if (stableDays > 30){
+            return false;
+        }        
+        return  true;
+    }
 }
