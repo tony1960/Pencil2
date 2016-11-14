@@ -41,7 +41,7 @@ public class Promotion {
      * @return  true    - if reducted price is with range 
      * @return false    - if reducted price is out of range.
      */
-    public Boolean priceReduction(Float reductedPrice) {
+    public Boolean priceReduction(Float reducedPrice) {
 
         if (stableDays < 30) {
             return false;
@@ -53,13 +53,15 @@ public class Promotion {
         low = price * .70F;
         high = price * .95F;
 
-        if (reductedPrice.compareTo(low) < 0) {
+        if (reducedPrice.compareTo(low) < 0) {
             return false;
         }
-        if (reductedPrice.compareTo(high) > 0) {
+        if (reducedPrice.compareTo(high) > 0) {
             return false;
         }
-        this.reducedPrice = reductedPrice;
+        
+        this.stableDays = 0;
+        this.reducedPrice = reducedPrice;
 
         return true;
     }
@@ -67,9 +69,24 @@ public class Promotion {
     
     public Boolean promotionValid(){
      
-        if (stableDays > 30){
+        if ((stableDays > 30) && (reducedPrice.compareTo(0.0F) > 0))      {
             return false;
         }        
         return  true;
+    }
+    
+    
+    public void  furtherPriceReduction (Float reduction ){
+    
+        reducedPrice = reduction;
+       
+    }
+    
+    public void costIncrease (Float price){
+        if (reducedPrice.compareTo(price) < price  ){
+            this.price = price;
+            reducedPrice = 0.0F;
+            stableDays = 0 ;
+        }
     }
 }
