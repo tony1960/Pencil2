@@ -53,7 +53,7 @@ public class PromotionTest {
 
     @Test
     public void testInitialPrice() {
-        System.out.println("testPrice");
+        System.out.println("testInitialPrice");
         Float price = 0.0F;
         Float expectedResult = 10.0F;
         instance.InitialPrice(10.0F);
@@ -64,7 +64,7 @@ public class PromotionTest {
 
     @Test
     public void testPriceReduction() {
-        System.out.println("priceReduction");
+        System.out.println("testPriceReduction");
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
         int days = 31;
@@ -77,7 +77,7 @@ public class PromotionTest {
     // reemove
     @Test
     public void testPriceReductiomLowEnd() {
-        System.out.println("priceReduction");
+        System.out.println("testPriceReductiomLowEnd");
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
         int days = 31;
@@ -89,7 +89,7 @@ public class PromotionTest {
 
     @Test
     public void testPriceReductionHigh() {
-        System.out.println("priceReduction");
+        System.out.println("testPriceReductionHigh");
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
         int days = 31;
@@ -101,7 +101,7 @@ public class PromotionTest {
 
     @Test
     public void testPriceReductionLowEnd() {
-        System.out.println("priceReduction");
+        System.out.println("testPriceReductionLowEnd");
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
         int days = 31;
@@ -126,7 +126,7 @@ public class PromotionTest {
     /// Test 30 days stable test
     @Test
     public void testPriceReductionFewerDays() {
-        System.out.println("priceReduction");
+        System.out.println("testPriceReductionFewerDays");
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
         int days = 29;
@@ -139,7 +139,7 @@ public class PromotionTest {
     // reemove
     @Test
     public void testPriceReductiomLowEndFewerDays() {
-        System.out.println("priceReduction");
+        System.out.println("testPriceReductiomLowEndFewerDays");
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
         int days = 29;
@@ -151,7 +151,7 @@ public class PromotionTest {
 
     @Test
     public void testPriceReductionHighFewerDays() {
-        System.out.println("priceReduction");
+        System.out.println("testPriceReductionHighFewerDays");
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
         int days = 29;
@@ -163,7 +163,7 @@ public class PromotionTest {
 
     @Test
     public void testPriceReductionLowEndFewerDays() {
-        System.out.println("priceReduction");
+        System.out.println("testPriceReductionLowEndFewerDays");
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
         int days = 29;
@@ -175,7 +175,7 @@ public class PromotionTest {
 
     @Test
     public void testPriceReductionHighEndFewerDay() {
-        System.out.println("priceReduction");
+        System.out.println("testPriceReductionHighEndFewerDay");
         Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
         int days = 29;
@@ -189,7 +189,7 @@ public class PromotionTest {
     //
     @Test
     public void testpromotionValid() {
-        System.out.println("priceReduction");
+        System.out.println("testpromotionValid");
         int days = 29;
         instance.InitialStableDays(days);
         Boolean result = instance.promotionValid();
@@ -199,7 +199,7 @@ public class PromotionTest {
 
     @Test
     public void testpromotionValidMoreDays() {
-        System.out.println("priceReduction");
+        System.out.println("testpromotionValidMoreDays");
         int days = 31;
         instance.InitialStableDays(days);
         Boolean result = instance.promotionValid();
@@ -222,7 +222,7 @@ public class PromotionTest {
 
     @Test
     public void costIncreasePrice() {
-        System.out.println("testFurtherPriceReduction");
+        System.out.println("costIncreasePrice");
         Float initPrice = 10.0F;
         Float reducedPrice = 8.0F;
         Float expectedResult = 11.0F;
