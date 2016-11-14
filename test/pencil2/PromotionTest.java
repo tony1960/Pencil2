@@ -219,22 +219,47 @@ public class PromotionTest {
         Float result = instance.reducedPrice;
         assertEquals(expectedResult, result, .001);
     }
-    
+
     @Test
-    public void costIncrease(){
-                System.out.println("testFurtherPriceReduction");
+    public void costIncreasePrice() {
+        System.out.println("testFurtherPriceReduction");
         Float initPrice = 10.0F;
         Float reducedPrice = 8.0F;
-        Float expectedResult  = 11.0F;
+        Float expectedResult = 11.0F;
         instance.InitialPrice(initPrice);
         instance.furtherPriceReduction(reducedPrice);
         Float priceIncrease = 11.0F;
         instance.costIncrease(priceIncrease);
         Float result = instance.price;
-        assertEquals (expectedResult, result, 0.001F);
-        
-                
+        assertEquals(expectedResult, result, 0.001F);
     }
-    
+
+    @Test
+    public void costIncreaseDays() {
+        System.out.println("costIncreaseDays");
+        Float initPrice = 10.0F;
+        Float reducedPrice = 8.0F;
+        int expectedResult = 0;
+        instance.InitialPrice(initPrice);
+        instance.furtherPriceReduction(reducedPrice);
+        Float priceIncrease = 11.0F;
+        instance.costIncrease(priceIncrease);
+        int result = instance.stableDays;
+        assertEquals(expectedResult, result);
+    }
+
+    public void costIncreasePriceReductedPrice() {
+        System.out.println("costIncreasePriceReductedPrice");
+        Float initPrice = 10.0F;
+        Float reducedPrice = 8.0F;
+        Float expectedResult = 0.0F;
+        instance.InitialPrice(initPrice);
+        instance.furtherPriceReduction(reducedPrice);
+        Float priceIncrease = 11.0F;
+        instance.costIncrease(priceIncrease);
+        Float result = instance.reducedPrice;
+        assertEquals(expectedResult, result, 0.001F);
+
+    }
 
 }
