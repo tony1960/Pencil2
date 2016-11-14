@@ -99,18 +99,35 @@ public class PromotionTest {
         assertFalse ("Promotion", result);
     }
     
+    @Test
+    public void testPriceReductionLowEnd() {
+        System.out.println("priceReduction");
+        Float initPrice = 10.0F;
+        instance.InitialPrice(initPrice);
+        int days = 31;
+        instance.InitialStableDays(days);
+        Boolean result = instance.priceReduction (7.0F);
+        
+        assertTrue ("Promotion", result);
+    }
     
     @Test
-    public void testPriceReductionFewerDaysLow() {
+    public void testPriceReductionHighEnd() {
         System.out.println("priceReduction");
-        Float initPrice = 1.0F;
+        Float initPrice = 10.0F;
         instance.InitialPrice(initPrice);
-        int days = 19;
+        int days = 31;
         instance.InitialStableDays(days);
-        Boolean result = instance.priceReduction(9.00F);
+        Boolean result = instance.priceReduction(9.5F);
         
-        assertFalse("Promotion", result);
+        assertTrue ("Promotion", result);
     }
+    
+    
+    
+    
+    
+    
     
     
     
