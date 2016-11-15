@@ -193,7 +193,7 @@ public class PromotionTest {
         int days = 29;
         instance.InitialStableDays(days);
         Boolean result = instance.promotionValid();
-        assertTrue("Promotion", result);
+        assertFalse("Promotion", result);
 
     }
 
@@ -312,8 +312,6 @@ public class PromotionTest {
         Float initPrice = 10.0F;
         Float reducedPrice = 8.0F;
         instance.InitialPrice(initPrice);
-        instance.InitialStableDays(29);
-        instance.priceReduction(9.00F);
         instance.InitialStableDays (21);
         Boolean result =  instance.addtionalPromotionValid();
         assertFalse ("Promotion", result);
