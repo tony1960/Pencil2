@@ -19,7 +19,7 @@ public class Promotion {
     /**
      * InitialStableDays. Sets the number of days at a Stable price.
      *
-     * @param days Stable days.
+     * @param stableDays Stable days.
      */
     public void InitialStableDays(int stableDays) {
         this.stableDays = stableDays;
@@ -37,8 +37,8 @@ public class Promotion {
     /**
      * priceRedution . Reduces price to reducedPrice price.
      *
-     * @param   price   Price value.
-     * @return          true - if reduced price is with range otherwise false 
+     * @param reducedPrice Price value.
+     * @return true - if reduced price is with range otherwise false
      */
     public Boolean priceReduction(Float reducedPrice) {
 
@@ -65,22 +65,22 @@ public class Promotion {
         return true;
     }
 
-     /**
-     *  Determines is a promotion is Valid.
+    /**
+     * Determines is a promotion is Valid.
      *
-     * @return          true, if a promotion is valid otherwise false. 
+     * @return true, if a promotion is valid otherwise false.
      */
     public Boolean promotionValid() {
 
-        if ((stableDays > 30) && (reducedPrice.compareTo(0.0F) > 0)) {
-            return false;
+        if ((stableDays >= 30) && (reducedPrice.compareTo(0.0F) == 0)) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     /**
-     *  Further reduces a reduced price promotion. if reduction is out of
-     * range it with sets reducedPrice and StableDays to zero
+     * Further reduces a reduced price promotion. if reduction is out of range
+     * it with sets reducedPrice and StableDays to zero
      *
      * @param reduction the price to reduce reducedPrice too.
      */
@@ -110,10 +110,10 @@ public class Promotion {
     }
 
     /**
-     *  Increases the cost of an item. sets reducedPrice and StableDays to zero
-     *  @param price The price to increase to.
+     * Increases the cost of an item. sets reducedPrice and StableDays to zero
+     *
+     * @param price The price to increase to.
      */
-    
     public void costIncrease(Float price) {
         if (reducedPrice.compareTo(price) < price) {
             this.price = price;
@@ -123,16 +123,16 @@ public class Promotion {
     }
 
     /**
-     *  Determines is a promotion is Valid.
+     * Determines is a promotion is Valid.
      *
-     * @return          true, if an addition promotion is valid otherwise false. 
+     * @return true, if an addition promotion is valid otherwise false.
      */
     public Boolean addtionalPromotionValid() {
 
-        if ((reducedPrice.compareTo(0.0F) != 0) || (stableDays <= 30)) {
+        if (reducedPrice.compareTo(0.0F) > 0) {
             return false;
         }
 
-        return true;
+        return stableDays > 30;
     }
 }
