@@ -6,6 +6,7 @@
 package pencil2;
 
 /**
+ * This class is a possible solution for the Red Pencil Kata
  *
  * @author tonys
  */
@@ -27,19 +28,17 @@ public class Promotion {
     /**
      * InitialPrice. Sets the Price for start of test.
      *
-     * @param   price   Price value.
+     * @param price Price value.
      */
     public void InitialPrice(Float price) {
         this.price = price;
     }
 
-    
     /**
      * priceRedution . Reduces price to reducedPrice price.
      *
      * @param   price   Price value.
-     * @return  true    - if reducted price is with range 
-     * @return false    - if reducted price is out of range.
+     * @return          true - if reduced price is with range otherwise false 
      */
     public Boolean priceReduction(Float reducedPrice) {
 
@@ -59,64 +58,81 @@ public class Promotion {
         if (reducedPrice.compareTo(high) > 0) {
             return false;
         }
-        
+
         this.stableDays = 0;
         this.reducedPrice = reducedPrice;
 
         return true;
     }
 
-    
-    public Boolean promotionValid(){
-     
-        if ((stableDays > 30) && (reducedPrice.compareTo(0.0F) > 0))      {
+     /**
+     *  Determines is a promotion is Valid.
+     *
+     * @return          true, if a promotion is valid otherwise false. 
+     */
+    public Boolean promotionValid() {
+
+        if ((stableDays > 30) && (reducedPrice.compareTo(0.0F) > 0)) {
             return false;
-        }        
-        return  true;
+        }
+        return true;
     }
-    
-    
-    public void  furtherPriceReduction (Float reduction ){
-    
+
+    /**
+     *  Further reduces a reduced price promotion. if reduction is out of
+     * range it with sets reducedPrice and StableDays to zero
+     *
+     * @param reduction the price to reduce reducedPrice too.
+     */
+    public void furtherPriceReduction(Float reduction) {
+
         Float low;
         Float high;
 
         low = price * .70F;
-        
-        
-                   System.out.println (" compare reduction " +  reduction);
 
-        if (reduction.compareTo(low) < 0)   {
-            
-            System.out.println (" compare low = " + reducedPrice.compareTo(low));
-            System.out.println ("reducedPrice = " + reducedPrice );
-                    
-            stableDays  = 0;
+        System.out.println(" compare reduction " + reduction);
+
+        if (reduction.compareTo(low) < 0) {
+
+            System.out.println(" compare low = " + reducedPrice.compareTo(low));
+            System.out.println("reducedPrice = " + reducedPrice);
+
+            stableDays = 0;
             reducedPrice = 0.0F;
-            
-            System.out.println ("low = " + low +" " + "reduction " + reduction);
+
+            System.out.println("low = " + low + " " + "reduction " + reduction);
             return;
         }
-        
-     reducedPrice = reduction;
-       
+
+        reducedPrice = reduction;
+
     }
+
+    /**
+     *  Increases the cost of an item. sets reducedPrice and StableDays to zero
+     *  @param price The price to increase to.
+     */
     
-    public void costIncrease (Float price){
-        if (reducedPrice.compareTo(price) < price  ){
+    public void costIncrease(Float price) {
+        if (reducedPrice.compareTo(price) < price) {
             this.price = price;
             reducedPrice = 0.0F;
-            stableDays = 0 ;
+            stableDays = 0;
         }
     }
-    
-    
+
+    /**
+     *  Determines is a promotion is Valid.
+     *
+     * @return          true, if an addition promotion is valid otherwise false. 
+     */
     public Boolean addtionalPromotionValid() {
-   
-        if (( reducedPrice.compareTo(0.0F) != 0) || ( stableDays <= 30)){
+
+        if ((reducedPrice.compareTo(0.0F) != 0) || (stableDays <= 30)) {
             return false;
         }
-       
+
         return true;
-    } 
+    }
 }
